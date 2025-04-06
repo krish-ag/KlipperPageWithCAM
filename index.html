@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, initial-scale=1.0">
+    <title>Fluidd</title>
+</head>
+<body style="display: flex; border: 0; margin: 0;">
+    <iframe src="http://192.168.1.142:4408" frameborder="0"
+            style="width: 100vw; height: 100vh;"
+            allowfullscreen></iframe>
+    <iframe src="http://192.168.1.142:8000" frameborder="0"
+            style="position: absolute; bottom: 0; right: 0; width: 100vw; height: 100vh; zoom: .4;"
+            allowfullscreen></iframe>
+    <script>
+        // change the ip address of both iframes to the ip address provided in ip query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const ip = urlParams.get('ip');
+        if (ip) {
+            const iframes = document.querySelectorAll('iframe');
+            iframes[0].src = `http://${ip}:4408`;
+            iframes[1].src = `http://${ip}:8000`;
+        }
+    </script>
+</body>
+</html>
